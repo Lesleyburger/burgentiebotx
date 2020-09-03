@@ -2,19 +2,16 @@ const discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-    var icon = message.guild.iconURL;
-
     var botEmbed = new discord.RichEmbed()
-        .setDescription("**DISCORD TOTAL MEMBERS**")
-        .setColor("#FF0000")
-        .setThumbnail(icon)
-        .addField("there are a total of", message.guild.memberCount, "people in the server")
-
+    .setColor("#00FF00")
+    .setDescription(`**there are** **__${message.guild.memberCount}__** **members in the server.**`)
+    .setImage("https://i.imgur.com/ir5JMys.gif")
     return message.channel.send(botEmbed);
 
 }
 
 module.exports.help = {
-    name: "Members",
-    description: "how many people are in the server"
+    name: "members",
+    description: "shows you how many members in the server are.",
+    usage: "*members"
 }
