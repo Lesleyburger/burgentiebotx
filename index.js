@@ -99,6 +99,8 @@ bot.on("message", async message => {
 
   var command = messageArray[0];
 
+  if(!message.content.startsWith(prefix)) return;
+
   var arguments = messageArray.slice(1);
 
 
