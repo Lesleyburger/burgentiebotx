@@ -15,6 +15,6 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-    name: "members",
+    name: "Members",
     description: "how many people are in the server"
 }
