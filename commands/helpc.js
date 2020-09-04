@@ -16,12 +16,12 @@ module.exports.run = async (bot, message, args) => {
         .addField("*queue", "Queue (music bot)")
         .addField("*search", "searching for songs (music bot)")
         .addField("*pause", "sets the bot in pause mode *resume to cancel the pause mode and starts playing music again")
-        .addField("?rps", "choose between rock, paper, scissor")
-        .addField("?hello", "hello there")
-        .addField("?Info", "Information about the bot")
-        .addField("?serverinfo", "Info about the server")
-        .addField()
-        .addField("More commands in the future! stay tuned (:")
+        .addField("*rps", "choose between rock, paper, scissor")
+        .addField("*hello", "hello there")
+        .addField("*Info", "Information about the bot")
+        .addField("*serverinfo", "Info about the server")
+        .addField("-","-")
+        .addField("More commands in the future! stay tuned (:","-")
         
 
     return message.channel.send(botEmbed);

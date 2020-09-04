@@ -8,9 +8,9 @@ module.exports.run = async (bot, message, args) => {
 
     var reason = args.join(" ").slice(22);
 
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You do not have permissions to use this command");
+    if (!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("You do not have permissions to use this command");
 
-    if (kickUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You can't ban this user.");
+    if (kickUser.hasPermission("KICK_MEMBERS")) return message.channel.send("You can't kick this user.");
 
     var kick = new discord.RichEmbed()
       .setDescription("Kick")
