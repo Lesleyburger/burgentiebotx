@@ -76,6 +76,16 @@ bot.on("guildMemberRemove", member => {
 
 });
 
+bot.on('message', message => {
+  if (message.content === '!avatar') {
+    var user = message.mentions.users.first();
+    let embed = new Discord.RichEmbed()
+    embed.setImage(user.avatarURL)
+    .setColor('#275BF0')
+    message.channel.send(embed)
+  }
+});
+
 bot.on("message", async message => {
 
   // als bot bericht stuurt stuur dan return
