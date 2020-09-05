@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
     getuseravatar(user);
     }
     function getuseravatar(user) {
-    var embed = new Discord.RichEmbed()
+    var embed = new discord.RichEmbed()
     .setColor("RANDOM") //can specifiy color of embed here
     .setImage(user.avatarURL)
     message.channel.send(embed)
