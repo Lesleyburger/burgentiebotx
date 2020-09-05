@@ -1,25 +1,32 @@
 const discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-let user;
-
-if (message.mentions.first()) {
-    user = message.mentions.users.first();
-    } else if (args[0]) {
-        user = message.guild.members.cache.get(args[0]).user;
-    } else {
-        user = message.author;
-    } 
-
-    let avatar = user.displayAvatarURL({size: 4096, dynamic: true});
+    var user;
+    user = message.mentions.users.first(); //mentioned user, if any
+    if (!user) { //if no one is mentioned
+    if (!args[0]) { //if the command is only "!avatar". I.e. no one is mentioned and no id is specified
+    user = message.author;
+    getuseravatar(user);
+    } else { //if a user id IS specified (need developer mode on on discord to get it)
+    var id = args[0]
+    client.fetchUser(id).then(user => {
+    getuseravatar(user) //get avatar of the user, whose id is specified
     
-    const embed = new discord.MessageEmbed()
-    .setTitle(`${user.tag} avatar`)
-    .setDescription(`[avatar URL of **${user.tag}**](${avatar})`)
-    .setColor("0x1d1d1d")
-    .setImage(avatar)
-
-    return message.channel.send(embed)
+    }).catch(error => console.log(error))
+    
+    }
+    
+    } else { //if someone IS mentioned
+    getuseravatar(user);
+    }
+    function getuseravatar(user) {
+    var embed = new Discord.RichEmbed()
+    .setColor("RANDOM") //can specifiy color of embed here
+    .setImage(user.avatarURL)
+    message.channel.send(embed)
+    
+    }
+    
 }
 
 module.exports.help = {
