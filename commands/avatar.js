@@ -1,17 +1,28 @@
 const discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
+let user;
 
-    var user = message.mentions.users.first();
+if (message.mentions.first()) {
+    user = message.mentions.users.first();
+    } else if (args[0]) {
+        user = message.guild.members.cache.get(args[0]).user;
+    } else {
+        user = message.author;
+    } 
 
-    var embed = new discord.RichEmbed()
-        .setImage(user.avatarURL)
-        .setColor('#275BF0')
+    let avatar = user.displayAvatarURL({size: 4096, dynamic: true});
+    
+    const embed = new discord.MessageEmbed()
+    .setTitle(`${user.tag} avatar`)
+    .setDescription(`[avatar URL of **${user.tag}**](${avatar})`)
+    .setColor("0x1d1d1d")
+    .setImage(avatar)
 
-    return message.channel.send(embed);
+    return message.channel.send(embed)
 }
 
 module.exports.help = {
     name: "avatar",
-    description: "avatar of from a user"
+    description: "Someone's avatar"
 }
